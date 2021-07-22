@@ -17,8 +17,11 @@ class AdListCreateAPIView(ListCreateAPIView, ListModelMixin, CreateModelMixin):
     def get_queryset(self):
         queryset = Ad.objects.all()
         region = self.request.query_params.get('region', None)
+        category = self.request.query_params.get('category', None)
         if region:
             queryset = queryset.filter(region__icontains=region)
+        if category:
+            queryset = queryset.filter(category=category)
         return queryset
 
     def perform_create(self, serializer):

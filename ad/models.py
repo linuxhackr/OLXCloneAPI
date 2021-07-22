@@ -1,6 +1,6 @@
 from django.db import models
 from account.models import User
-
+from category.models import Category
 
 def default_location():
     return {
@@ -32,7 +32,9 @@ class Ad(models.Model):
     images = models.ManyToManyField(Image, blank=True)
     address = models.TextField(default='')  # full address text
 
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+
     region = models.CharField(default='', max_length=100)
 
     location = models.JSONField(default=default_location)  # lon, lat
-    extra = models.JSONField(null=True)  # lon, lat
+    extra = models.JSONField(null=True, blank=True)  # lon, lat
