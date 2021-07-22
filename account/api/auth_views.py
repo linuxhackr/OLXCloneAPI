@@ -146,7 +146,6 @@ def change_password(request):
 def update_account(request):
     fullname = request.data.get('fullname', None)
     pic = request.FILES.get('pic', None)
-    email = request.data.get('email', None)
 
     user = request.user
 
@@ -154,13 +153,10 @@ def update_account(request):
         fullname = str(fullname).strip()
         user.fullname = fullname
 
-    if email is not None:
-        user.update_website(email)
     if pic is not None:
         user.pic = pic
 
     user.save()
-    user.update_to_collection()
     serializer = UserSerializer(user, context={'request': request})
     data = serializer.data
     token = get_token(user)

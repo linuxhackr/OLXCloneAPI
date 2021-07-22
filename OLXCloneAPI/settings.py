@@ -144,23 +144,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'MR6HZXYRJ4TBSBGC2A4B'
-AWS_SECRET_ACCESS_KEY = 'x5Sfmqeurb2PDjq86VTUN9cqsWn5sgmHvbGY2XLpQbg'
-AWS_STORAGE_BUCKET_NAME = 'flashapp'
+# AWS_ACCESS_KEY_ID = 'MR6HZXYRJ4TBSBGC2A4B'
+# AWS_SECRET_ACCESS_KEY = 'x5Sfmqeurb2PDjq86VTUN9cqsWn5sgmHvbGY2XLpQbg'
+# AWS_STORAGE_BUCKET_NAME = 'flashapp'
 # AWS_S3_REGION_NAME = 'ap-south-1'
-AWS_S3_ENDPOINT_URL = 'https://sgp1.digitaloceanspaces.com'
+# AWS_S3_ENDPOINT_URL = 'https://sgp1.digitaloceanspaces.com'
 # AWS_S3_CUSTOM_DOMAIN = 'd1xurv31sxeawq.cloudfront.net'
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_LOCATION = 'flashmedia'
-AWS_DEFAULT_ACL = 'public-read'
-
-DEFAULT_FILE_STORAGE = 'flashAPI.custom_storages.CustomS3Boto3Storage'
-MEDIA_URL = '%s/%s/media/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+# AWS_QUERYSTRING_AUTH = False
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+# AWS_LOCATION = 'flashmedia'
+# AWS_DEFAULT_ACL = 'public-read'
+#
+# DEFAULT_FILE_STORAGE = 'flashAPI.custom_storages.CustomS3Boto3Storage'
+# MEDIA_URL = '%s/%s/media/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 X_FRAME_OPTIONS = 'ALLOWALL'
 

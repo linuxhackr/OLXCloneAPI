@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Image, Ad
 
-# Register your models here.
+admin.site.register(Ad)
+admin.site.register(Image)
