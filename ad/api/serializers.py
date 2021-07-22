@@ -16,7 +16,7 @@ class AdSerializer(ModelSerializer):
 
     class Meta:
         model = Ad
-        fields = ['id', 'title', 'price', 'description', 'user', 'address', 'type', 'location', 'extra', 'images']
+        fields = ['id', 'title', 'price', 'description', 'user', 'address', 'type', 'location', 'region', 'extra', 'images']
         read_only_fields = ['images']
 
     def create(self, validated_data):
