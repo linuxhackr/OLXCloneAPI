@@ -23,7 +23,7 @@ class Ad(models.Model):
         (TYPE_CAR, 'Car'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User,related_name='posted_ads', on_delete=models.CASCADE, null=True, blank=True)
 
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -33,6 +33,8 @@ class Ad(models.Model):
     address = models.TextField(default='')  # full address text
 
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+
+    liked = models.ManyToManyField(User, related_name='favourite_ads', blank=True)
 
     region = models.CharField(default='', max_length=100)
 
