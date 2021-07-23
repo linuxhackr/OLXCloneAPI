@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'ad.apps.AdConfig',
     'category.apps.CategoryConfig',
+    'banner.apps.BannerConfig',
 
     # third party
     'corsheaders',
