@@ -17,7 +17,6 @@ import datetime
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -47,6 +46,9 @@ INSTALLED_APPS = [
     'ad.apps.AdConfig',
     'category.apps.CategoryConfig',
     'banner.apps.BannerConfig',
+    'chat.apps.ChatConfig',
+
+    'channels',
 
     # third party
     'corsheaders',
@@ -87,6 +89,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'OLXCloneAPI.wsgi.application'
+ASGI_APPLICATION = 'OLXCloneAPI.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -217,7 +220,6 @@ REST_FRAMEWORK = {
 
 }
 
-
 # gmail_send/settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -226,6 +228,19 @@ EMAIL_HOST_PASSWORD = 'bxzgzkqrtpdenmzu'  # past the key or password app here
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": ["redis://@localhost:6379/4"],
+            "channel_capacity": {
+                # "http.request": 200,
+                # "http.response!*": 10,
+                # re.compile(r"^websocket.send\!.+"): 20,
+            },
+        }
+    },
+}
 
 """
 #Endpoints

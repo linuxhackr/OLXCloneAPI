@@ -12,4 +12,4 @@ class User(AbstractUser):
     pic = models.ImageField(upload_to='users/pics', null=True, blank=True)
 
     def __str__(self):
-        return self.username + " == "
+        return self.username
