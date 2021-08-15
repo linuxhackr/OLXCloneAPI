@@ -24,12 +24,15 @@ class AdListCreateAPIView(ListCreateAPIView, ListModelMixin, CreateModelMixin):
         region = self.request.query_params.get('region', None)
         category = self.request.query_params.get('category', None)
         favourites = self.request.query_params.get('favourites', None)
+        user = self.request.query_params.get('user', None)
         if region:
             queryset = queryset.filter(region__icontains=region)
         if category:
             queryset = queryset.filter(category=category)
         if favourites:
             queryset = queryset.filter(liked=self.request.user)
+        if user:
+            queryset = queryset.filter(user=self.request.user)
         return queryset
 
     def perform_create(self, serializer):
