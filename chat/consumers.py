@@ -13,7 +13,7 @@ from account.models import User
 from django.db.models import Q
 
 
-# wss://domain.com/ws/chat/?token=••••&user=••
+# ws://3.23.128.206/ws/chat/?token=••••&user=••
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -108,7 +108,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
 
 """
-SAMPLE_MESSAGE = {
+SAMPLE_MESSAGE
+{
     "action":"MESSAGE_SEND",
     "text":"some txt"
 }
